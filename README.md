@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🟡 RAY — Routines, Actions, You
 
-## Getting Started
+**RAY** is the main shell application of a modular productivity platform, designed to simulate the migration of a `single-spa` micro-frontend architecture into a modern **Next.js**-driven monolith. It integrates standalone MFEs while showcasing a variety of content rendering strategies through different pages of the shell app.
 
-First, run the development server:
+This app is part of the [`ray-tools`](https://github.com/ray-tools) organization.
+
+---
+
+## 🧩 What’s Inside
+
+This repository hosts the **Next.js shell app**:
+
+- Serves as the root of the system
+- Handles navigation and layout
+- Integrates standalone MFEs (e.g. Habit Tracker, Focus Timer)
+- Demonstrates **SSR**, **CSR**, **SSG**, and **ISR** via different routes
+
+The MFEs (e.g. `habit-ray`) live in separate repositories and are mounted dynamically.
+
+---
+
+## 🎯 Project Goals
+
+- Explore modern rendering patterns in **Next.js (App Router)**
+- Integrate with existing React MFEs
+- Replace legacy `single-spa` shell behavior
+- Build a composable dashboard-oriented portfolio system
+- Simulate a real-world migration in a developer-friendly setup
+
+---
+
+## 🧱 Tech Stack
+
+- ⚡ Next.js (App Router)
+- ⚛️ React 18
+- 🧭 TypeScript
+- 🎨 TailwindCSS
+- 🐳 Docker + Docker Compose
+- [ ] Optional: Webpack Module Federation or `iframe` strategy for MFEs
+
+---
+
+## 🗺️ Route + Rendering Strategy Map
+
+| Route                  | Description                                     | Rendering Method |
+|------------------------|-------------------------------------------------|------------------|
+| `/dashboard`           | Personalized metrics + widgets                 | **SSR**          |
+| `/reports/:id`         | Cached analytics & summaries                   | **ISR**          |
+| `/about`               | Static site content                            | **SSG**          |
+| `/feedback`            | Interactive form with client-side submission   | **CSR**          |
+| `/onboarding`          | Multi-step flow with transitions               | **CSR**          |
+| `/docs`                | Markdown-based knowledge base (optional)       | **SSG**          |
+| `/account/settings`    | Authenticated user settings                    | **SSR**          |
+
+---
+
+## 🧩 Micro-Frontends (MFEs)
+
+Each tool is a separate application integrated at runtime:
+
+| App             | Repo                                  | Integration      |
+|------------------|---------------------------------------|------------------|
+| Habit Tracker    | [`habit-ray`](https://github.com/ray-tools/habit-ray) | iframe / dynamic import |
+| Focus Timer      | _Planned_                             | iframe / dynamic import |
+| Notes App        | _Planned_                             | iframe / dynamic import |
+
+---
+
+## 🐳 Local Development with Docker
+
+### Requirements
+- Docker Desktop
+- Git
+
+### Setup
+
+Clone all required apps:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ray-tools/ray.git
+git clone https://github.com/ray-tools/habit-ray.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Start the dev environment from the shell app root:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd ray
+docker-compose up --build
+```
+This will:
+- Start the ray shell on http://localhost:3000
+- Start habit-ray (MFE) on a separate port (e.g., http://localhost:3001)
+- Provide networking between apps for local integration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📁 Suggested Repo Structure (across ray-tools org)
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+ray-tools/
+├── ray/           # Shell app (Next.js)
+├── habit-ray/     # Micro-frontend: Habit Tracker
+├── focus-ray/     # (planned) MFE: Focus Timer
+├── notes-ray/     # (planned) MFE: Notes App
+└── docker-compose.yml  # Shared orchestration
+```
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🪄 Naming
+**RAY** = Routines, Actions, You  
+Your modular productivity system.  
+Built for developers, designed for clarity, and structured to grow.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 💬 Questions, Ideas?
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Feel free to [open an issue](https://github.com/ray-tools/ray/issues) or [start a discussion](https://github.com/ray-tools/ray/discussions) if you'd like to contribute or collaborate!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+Built for experimentation. Designed for migration.  
+*— The ray-tools Project*
+
