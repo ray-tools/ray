@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
@@ -9,7 +10,19 @@ export const POST = async (req: NextRequest) => {
     where: { username },
   });
 
-  if (!user || user.password !== password) {
+  if (!user) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Invalid credentials",
+      },
+      { status: 401 }
+    );
+  }
+
+  const psswrdIsValid = await bcrypt.compare(password, user.password);
+
+  if (!psswrdIsValid) {
     return NextResponse.json(
       {
         success: false,
