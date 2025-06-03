@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useUser } from "./hooks/useLUser";
+import { useUser } from "./hooks/useUser";
 
 export default function Home() {
   const { password, username, setUsername, handleLogin, setPassword, error } =

@@ -27,6 +27,16 @@ export const useUser = () => {
     }
   };
 
+  const handleLogout = async (): Promise<void> => {
+    await fetch("/api/logout", {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    router.push("/");
+  };
+
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -50,6 +60,7 @@ export const useUser = () => {
   return {
     error,
     handleLogin,
+    handleLogout,
     handleRegister,
     password,
     setError,

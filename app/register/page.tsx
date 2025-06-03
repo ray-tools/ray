@@ -1,8 +1,7 @@
 "use client";
 
-import { useUser } from "@/hooks/useLUser";
+import { useUser } from "@/hooks/useUser";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 export default function RegisterPage() {
   const {

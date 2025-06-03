@@ -3,4 +3,6 @@
 out/        
 node_modules/
 .env
-.env.local  
+.env.local 
+
+prisma/seed.js

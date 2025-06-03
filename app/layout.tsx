@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./styles/globals.css";
 import { Navbar } from "./components/Navbar";
+import { useUser } from "./hooks/useUser";
+import { LogoutBtn } from "./components/LogoutBtn";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black dark:bg-black dark:text-white`}
       >
-        <Navbar />
+        <div className="flex w-full  justify-between cursor-pointer">
+          <Navbar />
+          <LogoutBtn />
+        </div>
         {children}
       </body>
     </html>
