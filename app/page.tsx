@@ -15,14 +15,14 @@ export default function Home() {
           Your modular productivity workspace
         </p>
       </header>
-      <main className="w-full flex items-center justify-center bg-gray-800 p-10">
+      <main className="w-full flex items-center justify-center ">
         <form
           onSubmit={handleLogin}
           className="w-full max-w-sm bg-gray-700 p-6 rounded-2xl shadow-xl space-y-4"
         >
           <h2 className="text-xl font-semibold">Login</h2>
           <input
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded bg-gray-50 text-black"
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
             required
@@ -30,7 +30,7 @@ export default function Home() {
             value={username}
           />
           <input
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded bg-gray-50 text-black"
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             required

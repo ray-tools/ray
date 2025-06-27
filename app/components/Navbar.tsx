@@ -12,7 +12,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center justify-center gap-6 py-4 border-b border-gray-200 dark:border-gray-800 w-[95%]">
+    <nav className="flex items-center justify-start gap-6 py-4 px-8 border-b border-gray-200 dark:border-gray-800 w-[95%]">
       {navItems.map(({ href, label }) => (
         <Link
           key={href}

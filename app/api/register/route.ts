@@ -17,9 +17,9 @@ export const POST = async (req: NextRequest) => {
     );
   }
 
-  const existing = prisma.user.findUnique({ where: { username } });
+  const existing = await prisma.user.findUnique({ where: { username } });
 
-  if (!existing) {
+  if (existing) {
     return NextResponse.json(
       {
         success: false,

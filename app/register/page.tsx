@@ -22,7 +22,7 @@ export default function RegisterPage() {
       >
         <h2 className="text-xl font-semibold">Register</h2>
         <input
-          className="w-full border p-2 rounded"
+          className="w-full border p-2 rounded bg-gray-50 text-black"
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
           required
@@ -30,7 +30,7 @@ export default function RegisterPage() {
           value={username}
         />
         <input
-          className="w-full border p-2 rounded"
+          className="w-full border p-2 rounded bg-gray-50 text-black"
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
           required
